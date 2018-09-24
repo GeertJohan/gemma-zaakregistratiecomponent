@@ -10,8 +10,6 @@ import os
 
 from django.core.wsgi import get_wsgi_application
 
-from nlx_middleware import NLxInwayURLRewriter
-
 from zrc.setup import setup_env
 
 
@@ -30,6 +28,3 @@ def init_newrelic():
 
 setup_env()
 application = get_wsgi_application()
-
-# apply NLX gateway middleware
-application = NLxInwayURLRewriter(application)
