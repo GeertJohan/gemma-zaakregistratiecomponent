@@ -14,6 +14,7 @@ django-axes==4.4.0
 django-choices==1.6.1
 django-filter==1.1.0
 django-ipware==2.1.0      # via django-axes
+django-redis==4.9.0
 django==2.0.6
 djangorestframework-camel-case==0.2.0
 djangorestframework-filters==0.10.2
@@ -40,6 +41,7 @@ python-dotenv==0.8.2
 pytz==2018.4
 pyyaml==3.12              # via oyaml, zds-schema
 raven==6.9.0
+redis==2.10.6             # via django-redis
 requests==2.18.4          # via coreapi, zds-schema
 ruamel.yaml==0.15.37      # via drf-yasg
 six==1.11.0               # via djangorestframework-gis, drf-yasg, isodate, pip-tools, python-dateutil
