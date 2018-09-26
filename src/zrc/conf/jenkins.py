@@ -59,3 +59,7 @@ JENKINS_TASKS = (
     'django_jenkins.tasks.run_pylint',
     'django_jenkins.tasks.run_pep8',
 )
+
+# disable failing NLX middleware api spec lookups
+
+NLX_URL_REWRITE_ENABLED = False
