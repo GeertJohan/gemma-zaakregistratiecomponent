@@ -18,3 +18,4 @@ djangorestframework-filters
 drf-yasg
 drf-writable-nested
 zds-schema==0.3.1
+nlx-middleware>=0.2.0
