@@ -53,6 +53,7 @@ INSTALLED_APPS = [
     # External applications.
     'axes',
     'django_filters',
+    'nlx_middleware',
     'zds_schema',  # before drf_yasg to override the management command
     'drf_yasg',
     'rest_framework',
