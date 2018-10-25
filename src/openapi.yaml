@@ -905,7 +905,10 @@ paths:
   /zaken:
     get:
       operationId: zaak_list
-      description: Geef een lijst van ZAAKen.
+      description: 'Geef een lijst van ZAAKen.
+
+
+        Deze lijst wordt standaard gepagineerd met 100 zaken per pagina.'
       parameters:
       - name: identificatie
         in: query
@@ -928,6 +931,12 @@ paths:
         schema:
           type: string
           format: uri
+      - name: page
+        in: query
+        description: A page number within the paginated result set.
+        required: false
+        schema:
+          type: integer
       - name: Accept-Crs
         in: header
         description: Het 'Coordinate Reference System' (CRS) van de verzoekdata. Volgens
@@ -952,9 +961,23 @@ paths:
           content:
             application/json:
               schema:
-                type: array
-                items:
-                  $ref: '#/components/schemas/Zaak'
+                required:
+                - count
+                - results
+                type: object
+                properties:
+                  count:
+                    type: integer
+                  next:
+                    type: string
+                    format: uri
+                  previous:
+                    type: string
+                    format: uri
+                  results:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/Zaak'
         '401':
           description: ''
           content:
@@ -1109,6 +1132,12 @@ paths:
       operationId: zaak__zoek
       description: Voer een (geo)-zoekopdracht uit op ZAAKen.
       parameters:
+      - name: page
+        in: query
+        description: A page number within the paginated result set.
+        required: false
+        schema:
+          type: integer
       - name: Accept-Crs
         in: header
         description: Het 'Coordinate Reference System' (CRS) van de verzoekdata. Volgens
@@ -1133,9 +1162,23 @@ paths:
           content:
             application/json:
               schema:
-                type: array
-                items:
-                  $ref: '#/components/schemas/Zaak'
+                required:
+                - count
+                - results
+                type: object
+                properties:
+                  count:
+                    type: integer
+                  next:
+                    type: string
+                    format: uri
+                  previous:
+                    type: string
+                    format: uri
+                  results:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/Zaak'
         '400':
           description: ''
           content:

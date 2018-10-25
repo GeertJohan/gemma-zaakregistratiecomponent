@@ -2,6 +2,7 @@ from django.shortcuts import get_object_or_404
 
 from rest_framework import mixins, viewsets
 from rest_framework.decorators import action
+from rest_framework.pagination import PageNumberPagination
 from rest_framework.response import Response
 from zds_schema.geo import GeoMixin
 from zds_schema.search import SearchMixin
@@ -41,12 +42,15 @@ class ZaakViewSet(GeoMixin,
 
     list:
     Geef een lijst van ZAAKen.
+
+    Deze lijst wordt standaard gepagineerd met 100 zaken per pagina.
     """
     queryset = Zaak.objects.all()
     serializer_class = ZaakSerializer
     search_input_serializer_class = ZaakZoekSerializer
     filter_class = ZaakFilter
     lookup_field = 'uuid'
+    pagination_class = PageNumberPagination
 
     @action(methods=('post',), detail=False)
     def _zoek(self, request, *args, **kwargs):

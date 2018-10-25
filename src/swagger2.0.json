@@ -1005,7 +1005,7 @@
         "/zaken": {
             "get": {
                 "operationId": "zaak_list",
-                "description": "Geef een lijst van ZAAKen.",
+                "description": "Geef een lijst van ZAAKen.\n\nDeze lijst wordt standaard gepagineerd met 100 zaken per pagina.",
                 "parameters": [
                     {
                         "name": "identificatie",
@@ -1030,6 +1030,13 @@
                         "format": "uri"
                     },
                     {
+                        "name": "page",
+                        "in": "query",
+                        "description": "A page number within the paginated result set.",
+                        "required": false,
+                        "type": "integer"
+                    },
+                    {
                         "name": "Accept-Crs",
                         "in": "header",
                         "description": "Het 'Coordinate Reference System' (CRS) van de verzoekdata. Volgens de GeoJSON spec is WGS84 de default (EPSG:4326 is hetzelfde als WGS84).",
@@ -1044,9 +1051,29 @@
                     "200": {
                         "description": "",
                         "schema": {
-                            "type": "array",
-                            "items": {
-                                "$ref": "#/definitions/Zaak"
+                            "required": [
+                                "count",
+                                "results"
+                            ],
+                            "type": "object",
+                            "properties": {
+                                "count": {
+                                    "type": "integer"
+                                },
+                                "next": {
+                                    "type": "string",
+                                    "format": "uri"
+                                },
+                                "previous": {
+                                    "type": "string",
+                                    "format": "uri"
+                                },
+                                "results": {
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/definitions/Zaak"
+                                    }
+                                }
                             }
                         },
                         "headers": {
@@ -1229,6 +1256,13 @@
                         }
                     },
                     {
+                        "name": "page",
+                        "in": "query",
+                        "description": "A page number within the paginated result set.",
+                        "required": false,
+                        "type": "integer"
+                    },
+                    {
                         "name": "Accept-Crs",
                         "in": "header",
                         "description": "Het 'Coordinate Reference System' (CRS) van de verzoekdata. Volgens de GeoJSON spec is WGS84 de default (EPSG:4326 is hetzelfde als WGS84).",
@@ -1243,9 +1277,29 @@
                     "200": {
                         "description": "",
                         "schema": {
-                            "type": "array",
-                            "items": {
-                                "$ref": "#/definitions/Zaak"
+                            "required": [
+                                "count",
+                                "results"
+                            ],
+                            "type": "object",
+                            "properties": {
+                                "count": {
+                                    "type": "integer"
+                                },
+                                "next": {
+                                    "type": "string",
+                                    "format": "uri"
+                                },
+                                "previous": {
+                                    "type": "string",
+                                    "format": "uri"
+                                },
+                                "results": {
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/definitions/Zaak"
+                                    }
+                                }
                             }
                         },
                         "headers": {
